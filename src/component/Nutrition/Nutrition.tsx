@@ -1,11 +1,40 @@
+import { useState, useContext } from "react";
+import { GetNutritionHooks } from "../../custom-hooks/useNutrition";
+import { API_NINJA_NUTRITION } from "../../util/config";
+import { AppContext } from "../../context/context";
+import { CardNutrition } from "../UI/Card/Nutrition";
+import "../../util/utilFonst.scss";
+
 export const Nutrition = () => {
+    const [input, setInput] = useState<any>();
+    const { FetchNutrition } = GetNutritionHooks();
+    const { state } = useContext(AppContext);
+    const handlreChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setInput(e.target.value);
+    };
+
+    const handlerClick = () => {
+        FetchNutrition({ url: API_NINJA_NUTRITION, complement: input });
+    };
+
     return (
-        <div className="card w-50 m-auto" >
-            <div className="p-4 d-flex">
-                <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
-                <button className="btn btn-primary" >
-                    <i className="bi bi-search"></i>
-                </button>
+        <div className="container-fluid" >
+            <h1 className="p-2 my-3" style={{ fontFamily: "Roboto Serif", fontSize: "2.5rem" }} >Nutrition</h1>
+            <hr />
+            <div className="card w-50 m-auto shadow rounded bg-body" >
+                <div className="p-4 d-flex">
+                    <input type="text" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" onChange={handlreChange} />
+                    <button className="btn btn-primary mx-1" onClick={handlerClick}>
+                        <i className="bi bi-search"></i>
+                    </button>
+                </div>
+            </div>
+            <div className="container-fluid row row-cols-3 d-flex justify-content-center my-4 mx-auto" >
+                {
+                    state.data.map((i) => {
+                        return <CardNutrition {...i} />
+                    })
+                }
             </div>
         </div>
     );
