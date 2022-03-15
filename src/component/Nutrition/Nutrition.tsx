@@ -4,6 +4,8 @@ import { API_NINJA_NUTRITION } from "../../util/config";
 import { AppContext } from "../../context/context";
 import { CardNutrition } from "../UI/Card/Nutrition";
 import "../../util/utilFonst.scss";
+import "../../util/utilColor.scss";
+import "./style-nutrition.scss"
 
 export const Nutrition = () => {
     const [input, setInput] = useState<any>();
@@ -18,12 +20,12 @@ export const Nutrition = () => {
     };
 
     return (
-        <div className="container-fluid" >
-            <h1 className="p-2 my-3" style={{ fontFamily: "Roboto Serif", fontSize: "2.5rem" }} >Nutrition</h1>
+        <div className="container-fluid">
+            <h1 className="p-2 my-3 gray-9" style={{ fontFamily: "Roboto Serif", fontSize: "2.5rem" }} >Nutrition</h1>
             <hr />
-            <div className="card w-50 m-auto shadow rounded bg-body" >
-                <div className="p-4 d-flex">
-                    <input type="text" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" onChange={handlreChange} />
+            <div className="card w-50 m-auto shadow bg-body rounded-pill " >
+                <div className="p-4 d-flex gray-9 rounded-pill ">
+                    <input type="text" className="form-control gray-9 gray-text-1" id="exampleInputEmail1" aria-describedby="emailHelp" onChange={handlreChange} placeholder="Tomatoes"/>
                     <button className="btn btn-primary mx-1" onClick={handlerClick}>
                         <i className="bi bi-search"></i>
                     </button>

@@ -1,4 +1,5 @@
 import "../../../util/utilFonst.scss";
+import  "../../../util/utilColor.scss";
 
 export const CardNutrition = (props: any) => {
     return (
@@ -8,7 +9,7 @@ export const CardNutrition = (props: any) => {
                     <img src={props.url} className="img-fluid h-100" alt="..." />
                 </div>
                 <div className="col-md-8 p-0">
-                    <h5 className="card-header">{props.name}</h5>
+                    <h5 className="card-header rounded-0">{props.name}</h5>
                     <div className="card-body">
                         <ul className="list-group list-group-flush">
                             <li className="list-group-item row row-cols-2 d-flex text-start">
@@ -27,15 +28,12 @@ export const CardNutrition = (props: any) => {
                     </div>
                 </div>
                 <div className="card-footer p-1" style={{ fontSize: "1rem", fontStyle: "normal" }} >
-                    <ul className="nav  card-header-pills d-flex justify-content-center p-0 nav-tabs">
+                    <ul className="nav card-header-pills d-flex justify-content-center p-0 nav-tabs border-0">
                         <li className="nav-item p-0">
-                            <a className="nav-link active" href="/">Active</a>
+                            <a className="nav-link active" href="/">Information</a>
                         </li>
                         <li className="nav-item p-0">
-                            <a className="nav-link" href="/">Link</a>
-                        </li>
-                        <li className="nav-item p-0">
-                            <a className="nav-link disabled" href="/" >Disabled</a>
+                            <a className="nav-link" href="/">More</a>
                         </li>
                     </ul></div>
             </div>

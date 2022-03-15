@@ -1,0 +1,13 @@
+@import "../../util/scss/variables";
+input:hover,
+input:focus {
+    background-color: $gray-900 !important;
+    color: white !important;
+}
+
+input {
+    border: none !important;
+    outline: none;
+    border-bottom: 1px solid $gray-100 !important;
+    box-shadow: none !important;
+}
