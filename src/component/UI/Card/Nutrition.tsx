@@ -1,42 +1,52 @@
+import { useContext } from "react";
+import { AppContext } from "../../../context/context";
 import "../../../util/utilFonst.scss";
-import  "../../../util/utilColor.scss";
+import "../../../util/utilColor.scss";
+import "./card-style.scss";
 
-export const CardNutrition = (props: any) => {
+export const CardNutrition = () => {
+    const { state } = useContext(AppContext);
+
     return (
-        <div className="card mb-3 my-3 mx-2 col-6 shadow-sm text-dark" style={{ maxWidth: "540px", fontFamily: "Roboto Serif", fontSize: "2rem", fontWeight: "bold", fontStyle: "italic", textTransform: "capitalize" }}>
-            <div className="row h-100">
-                <div className="col-md-4 p-0 m-0">
-                    <img src={props.url} className="img-fluid h-100" alt="..." />
-                </div>
-                <div className="col-md-8 p-0">
-                    <h5 className="card-header rounded-0">{props.name}</h5>
-                    <div className="card-body">
-                        <ul className="list-group list-group-flush">
-                            <li className="list-group-item row row-cols-2 d-flex text-start">
-                                <h6 className="col-6">Calories: <small>{props.calories}</small></h6>
-                                <h6 className="col-6">Proteina: <small>{props.protein_g}</small></h6>
-                            </li>
-                            <li className="list-group-item row row-cols-2 d-flex text-start">
-                                <h6 className="col-6">Serving Size: <small>{props.serving_size_g}</small></h6>
-                                <h6 className="col-6">Sodio: <small>{props.sodium_mg}</small></h6>
-                            </li>
-                            <li className="list-group-item row row-cols-2 d-flex text-start">
-                                <h6 className="col-6">Grasa Total: <small>{props.fat_total_g}</small></h6>
-                                <h6 className="col-6">Grasa Saturada: <small>{props.fat_saturated_g}</small></h6>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div className="card-footer p-1" style={{ fontSize: "1rem", fontStyle: "normal" }} >
-                    <ul className="nav card-header-pills d-flex justify-content-center p-0 nav-tabs border-0">
-                        <li className="nav-item p-0">
-                            <a className="nav-link active" href="/">Information</a>
-                        </li>
-                        <li className="nav-item p-0">
-                            <a className="nav-link" href="/">More</a>
-                        </li>
-                    </ul></div>
-            </div>
+        <div className="card mb-3 my-3 mx-2 shadow shadow-light rounded bg-body card-color border" style={{ fontFamily: "Roboto Serif", fontSize: "1rem", fontWeight: "bold", fontStyle: "italic", textTransform: "capitalize" }}>
+            <table className="table table-hover text-light m-0">
+                <thead className="text-dark" >
+                    <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">Calories</th>
+                        <th scope="col">Serving size g</th>
+                        <th scope="col">Fat total g</th>
+                        <th scope="col">Fat saturated g</th>
+                        <th scope="col">Protein g</th>
+                        <th scope="col">Sodium mg</th>
+                        <th scope="col">Potassium mg</th>
+                        <th scope="col">Cholesterol mg</th>
+                        <th scope="col">Carbohydrates total</th>
+                        <th scope="col">Fiber g</th>
+                        <th scope="col">Sugar g</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {state.data.map((value) => {
+                        return (
+                            <tr className="table-dark" >
+                                <th scope="row" className="text-secondary text-start" style={{ fontFamily: "Oswald, sans-serif",fontSize:"1.3rem" }}>{value['name']}</th>
+                                <td>{value['calories']}</td>
+                                <td>{value['serving_size_g']}</td>
+                                <td>{value['fat_total_g']}</td>
+                                <td>{value['fat_saturated_g']}</td>
+                                <td>{value['protein_g']}</td>
+                                <td>{value['sodium_mg']}</td>
+                                <td>{value['potassium_mg']}</td>
+                                <td>{value['cholesterol_mg']}</td>
+                                <td>{value['carbohydrates_total_g']}</td>
+                                <td>{value['fiber_g']}</td>
+                                <td>{value['sugar_g']}</td>
+                            </tr>
+                        );
+                    })}
+                </tbody>
+            </table>
         </div>
     );
 };

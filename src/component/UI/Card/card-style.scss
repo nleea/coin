@@ -1,0 +1,17 @@
+@import "../../../util/utilColor.scss";
+.card-color {
+    background-color: #2c2b2b;
+    text-align: center;
+    & li {
+        background-color: inherit;
+        color: inherit;
+    }
+}
+
+.border {
+    border-bottom: 1px solid gray;
+}
+
+.crd-style {
+    flex: 0 1rem !important;
+}
