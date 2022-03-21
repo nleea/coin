@@ -29,8 +29,13 @@ export const Nutrition = () => {
                     </button>
                 </div>
             </div>
-            <div className="container-fluid my-4 mx-auto" >
-                <CardNutrition />
+            <div className="container-fluid my-4 mx-auto bg-dark text-white card" style={{ fontFamily: "Roboto Serif", fontSize: "2.5rem" }}>
+                <div className="card-header text-center border-bottom border-secondary">
+                    Nutrition Table
+                </div>
+                <div className="card-body" >
+                    <CardNutrition />
+                </div>
             </div>
         </div>
     );

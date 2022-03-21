@@ -15,3 +15,19 @@
 .crd-style {
     flex: 0 1rem !important;
 }
+
+input:-internal-autofill-selected {
+    background-color: black !important;
+}
+
+div table thead thead tr {
+    font-family: inherit;
+    font-weight: inherit;
+    font-style: inherit;
+    font-size: inherit;
+}
+
+.pa-color {
+    background-color: inherit;
+    color: white;
+}
