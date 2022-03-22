@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { GetNutritionHooks } from "../../custom-hooks/useNutrition";
 import { API_NINJA_NUTRITION } from "../../util/config";
-import { CardNutrition } from "../UI/Card/Nutrition";
+import { TableNutrition } from "../UI/Card/TableNutrition";
 import "../../util/utilFonst.scss";
 import "../../util/utilColor.scss";
 import "./style-nutrition.scss"
@@ -9,6 +9,9 @@ import "./style-nutrition.scss"
 export const Nutrition = () => {
     const [input, setInput] = useState<any>();
     const { FetchNutrition } = GetNutritionHooks();
+    const tableOptions = ["Name", "Calories", "Serving size g", "Fat total g", "Fat saturated g", "Protein g",
+        "Sodium mg", "Potassium mg", "Cholesterol mg", "Carbohydrates total", "Fiber g", "Sugar g", "Edit", "Delete"];
+
     const handlreChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setInput(e.target.value);
     };
@@ -19,7 +22,7 @@ export const Nutrition = () => {
 
     return (
         <div className="container-fluid">
-            <h1 className="p-2 my-3 gray-9" style={{ fontFamily: "Roboto Serif", fontSize: "2.5rem" }} >Nutrition</h1>
+            <h1 className="p-2 my-3 gray-9 text-light text-center" style={{ fontFamily: "Roboto Serif", fontSize: "2.5rem" }} >Nutrition</h1>
             <hr />
             <div className="card w-50 m-auto shadow bg-body rounded-pill " >
                 <div className="p-4 d-flex gray-9 rounded-pill ">
@@ -34,7 +37,7 @@ export const Nutrition = () => {
                     Nutrition Table
                 </div>
                 <div className="card-body" >
-                    <CardNutrition />
+                    <TableNutrition cols={tableOptions} rowsPerPage={6}/>
                 </div>
             </div>
         </div>
