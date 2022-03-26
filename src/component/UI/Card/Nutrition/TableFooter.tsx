@@ -1,9 +1,11 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 
 interface props {
     range: any;
-    setPage: any, page: any, slice: any
+    setPage: any;
+    page: any;
+    slice: any;
 }
 
 const TableFooter = (props: props) => {
@@ -12,7 +14,7 @@ const TableFooter = (props: props) => {
         if (props.slice.length < 1 && props.page !== 1) {
             props.setPage(props.page - 1);
         }
-    }, [props.slice, props.page, props.setPage]);
+    }, [props.slice, props.page, props.setPage, props]);
 
     const PageHandler = (el: number) => {
         props.setPage(el);
@@ -25,11 +27,11 @@ const TableFooter = (props: props) => {
                 <li className="page-item">
                     <button className="page-link pa-color" type="button">Previous</button>
                 </li>
-                {props.range.map((el: any) => {
-                    return <li className="page-item"><button className={["page-link", "bg-dark", "text-light"].join(' ')} type="button" onClick={() => PageHandler(el)}>{el}</button></li>
+                {props.range.map((el: any,p:any) => {
+                    return <li className="page-item" key={p} ><button className={["page-link", "bg-dark", "text-light"].join(' ')} type="button" onClick={() => PageHandler(el)}>{el}</button></li>
                 })}
                 <li className="page-item">
-                    <button className="page-link pa-color" >Next</button>
+                    <button className="page-link pa-color">Next</button>
                 </li>
             </ul>
         </nav>

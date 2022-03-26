@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { GetNutritionHooks } from "../../custom-hooks/useNutrition";
 import { API_NINJA_NUTRITION } from "../../util/config";
-import { TableNutrition } from "../UI/Card/TableNutrition";
+import { TableNutrition } from "../UI/Card/Nutrition/TableNutrition";
 import "../../util/utilFonst.scss";
 import "../../util/utilColor.scss";
-import "./style-nutrition.scss"
+import "./style-nutrition.scss";
 
 export const Nutrition = () => {
     const [input, setInput] = useState<any>();
@@ -12,13 +12,9 @@ export const Nutrition = () => {
     const tableOptions = ["Name", "Calories", "Serving size g", "Fat total g", "Fat saturated g", "Protein g",
         "Sodium mg", "Potassium mg", "Cholesterol mg", "Carbohydrates total", "Fiber g", "Sugar g", "Edit", "Delete"];
 
-    const handlreChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setInput(e.target.value);
-    };
+    const handlreChange = (e: React.ChangeEvent<HTMLInputElement>) => setInput(e.target.value);
 
-    const handlerClick = () => {
-        FetchNutrition({ url: API_NINJA_NUTRITION, complement: input });
-    };
+    const handlerClick = () => FetchNutrition({ url: API_NINJA_NUTRITION, complement: input });
 
     return (
         <div className="container-fluid">
@@ -36,8 +32,8 @@ export const Nutrition = () => {
                 <div className="card-header text-center border-bottom border-secondary">
                     Nutrition Table
                 </div>
-                <div className="card-body" >
-                    <TableNutrition cols={tableOptions} rowsPerPage={6}/>
+                <div className="card-body">
+                    <TableNutrition cols={tableOptions} rowsPerPage={6} />
                 </div>
             </div>
         </div>
