@@ -1,0 +1,36 @@
+@import "../../util/scss/variables";
+@import "../../util/utilFonst.scss";
+
+input:hover,
+input:focus {
+    background-color: $gray-900 !important;
+    color: white !important;
+}
+
+input {
+    border: none !important;
+    outline: none;
+    border-bottom: 1px solid $gray-100 !important;
+    box-shadow: none !important;
+}
+
+.leaflet-container {
+    height: 90vh;
+    width: 90vw;
+    margin: 50px;
+    margin: 0;
+}
+
+.grid-content__city {
+    display: grid;
+    grid-template-areas: "search search search search search" "map map map map map";
+}
+
+.search {
+    grid-area: search;
+    width: 100vw;
+}
+
+.map {
+    grid-area: map;
+}

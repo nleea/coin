@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import { AppContext } from "../../../../context/context";
 import { useTable } from "../../../../custom-hooks/useTable";
 import { TableFooter } from "./TableFooter";
-import { NutritionModal } from "../../../UI/Modal/NutritionModal";
+import { NutritionModal } from "../../Modal/NutritionModal";
 import "../../../../util/utilFonst.scss";
 import "./card-style.scss";
 

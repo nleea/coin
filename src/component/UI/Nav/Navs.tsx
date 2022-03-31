@@ -13,7 +13,7 @@ export const Navs = (props: props) => {
                     <Link className="nav-link active text-light" aria-current="page" to={"/nutrition"} onClick={props.handlerClick} >Active</Link>
                 </li>
                 <li className="nav-item hover-nav">
-                    <Link className="nav-link text-light" to="/" onClick={props.handlerClick}>Link</Link>
+                    <Link className="nav-link text-light" to="/city" onClick={props.handlerClick}>City</Link>
                 </li>
                 <li className="nav-item hover-nav">
                     <Link className="nav-link text-light" to="/" onClick={props.handlerClick}>Link</Link>

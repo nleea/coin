@@ -25,7 +25,7 @@ export const GetNutritionHooks = () => {
                     "Authorization": API_PEXELS_KEY
                 }
             });
-            const responsePhoto = respPhoto.data.photos[0].src.large;
+            const responsePhoto = respPhoto.data.photos[0].src.portrait;
             const response = resp.data;
             dispatch({ type: "ADD", payload: { ...response[0], url: responsePhoto } });
             setloading(false);
