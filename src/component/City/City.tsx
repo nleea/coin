@@ -1,6 +1,6 @@
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useState, useEffect } from "react";
 import { useCityHooks } from "../../custom-hooks/useCityHooks";
-import { Outlet, NavLink, useOutletContext, useLocation } from "react-router-dom";
+import { Outlet, NavLink, useOutletContext } from "react-router-dom";
 import "./city.scss"
 
 export function useUser() {
@@ -11,8 +11,18 @@ export const City = () => {
     const [input, setCity] = useState("");
     const { state, fetchCity } = useCityHooks();
     const ChangeHandler = (e: ChangeEvent<HTMLInputElement>) => setCity(e.target.value);
-
     const FetchHandler = () => fetchCity(input);
+    let a = document.querySelector(".content") as HTMLElement;
+    useEffect(() => {
+        if (state["latitude"] > 0) {
+            a.style.height = "auto";
+            a.style.width = "99vw";
+        }
+        return () => {
+            a.style.height = "100vh";
+            a.style.width = "100vw";
+        }
+    }, [a?.clientHeight, a?.style, state]);
 
     return (
         <div className="container-fluid my-3">
@@ -31,10 +41,9 @@ export const City = () => {
                             </div>
                         </div>
                     </div>
-
                 </div>
                 {state.name ? <div className="map m-3 card p-2 bg-dark shadow-sm" >
-                    <div className="card-body">
+                    <div className="card-body frame">
                         {<Outlet context={[state["latitude"], state["longitude"]]} />}
                     </div>
                 </div> : null}

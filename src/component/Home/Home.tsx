@@ -14,7 +14,7 @@ const Home = () => {
                     <div className="content-navbar">
                         <Navbar />
                     </div>
-                    <div className="body w-100">
+                    <div className="body w-100 card bg-dark">
                         <MainRoutes />
                     </div>
                 </div>
