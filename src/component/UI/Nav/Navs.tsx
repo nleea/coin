@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import "./navs-style.scss";
 
 interface props {
@@ -6,21 +6,22 @@ interface props {
 }
 
 export const Navs = (props: props) => {
+    const defectClass = ["nav-link", "text-light", "hover-nav", "nav-item"];
     return (
         <>
             <ul className="nav row ">
-                <li className="nav-item hover-nav">
-                    <Link className="nav-link active text-light" aria-current="page" to={"/nutrition"} onClick={props.handlerClick} >Active</Link>
-                </li>
-                <li className="nav-item hover-nav">
-                    <Link className="nav-link text-light" to="/city" onClick={props.handlerClick}>City</Link>
-                </li>
-                <li className="nav-item hover-nav">
-                    <Link className="nav-link text-light" to="/" onClick={props.handlerClick}>Link</Link>
-                </li>
-                <li className="nav-item hover-nav">
-                    <Link className="nav-link text-light" to="/" onClick={props.handlerClick}>Disabled</Link>
-                </li>
+
+                <NavLink className={({ isActive }) => isActive ? defectClass.join(" ").concat(" active") : defectClass.join(" ")} aria-current="page" to={"/nutrition"} onClick={props.handlerClick} >Nutrition</NavLink>
+
+
+                <NavLink className={({ isActive }) => isActive ? defectClass.join(" ").concat(" active") : defectClass.join(" ")} to="/city" onClick={props.handlerClick}>City</NavLink>
+
+
+                <NavLink className={({ isActive }) => isActive ? defectClass.join(" ").concat(" active") : defectClass.join(" ")} to="/" onClick={props.handlerClick}>Link</NavLink>
+
+
+                <NavLink className={({ isActive }) => isActive ? defectClass.join(" ").concat(" active") : defectClass.join(" ")} to="/" onClick={props.handlerClick}>Disabled</NavLink>
+
             </ul>
         </>
     );

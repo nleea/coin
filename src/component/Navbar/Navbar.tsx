@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { Backdrop } from "../UI/Backdrop/Backdrop";
 import { Navs } from "../UI/Nav/Navs";
 import "./router.css";
@@ -7,6 +8,10 @@ import "./router.css";
 export const Navbar = () => {
     const [canvaClass, setCanvaClass] = useState(["offcanvas", "offcanvas-start", "bg-dark"]);
     const [button, setButton] = useState(false);
+    const navigate = useNavigate();
+    useEffect(()=>{
+        navigate("/nutrition")
+    },[]);
 
     const ShowOrHideCanvaHandler = () => {
         const classes = ["offcanvas", "offcanvas-start", "bg-dark"];

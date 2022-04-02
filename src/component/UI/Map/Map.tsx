@@ -1,28 +1,26 @@
 import { useEffect, useMemo, useState, } from "react";
-import { MapContainer, TileLayer, useMap } from 'react-leaflet';
+import { MapContainer, TileLayer } from 'react-leaflet';
+import { useUser } from "../../City/City";
 
-interface props {
-    center: Array<number>
-}
-
-export const Map = (props: props) => {
+export const Map = () => {
     const [map, setMap] = useState<any>(null);
-
+    const [lon,lat] = useUser();
     useEffect(() => {
+        
         if (map)
-            map.setView(props.center);
-    }, [props.center]);
+            map.setView([lon,lat]);
+    }, [lon,lat,map]);
 
     const showMap = useMemo(
         () => (
-            <MapContainer center={props.center as any} zoom={13} dragging={true} whenCreated={setMap}>
+            <MapContainer center={[lon,lat]} zoom={13} dragging={true} whenCreated={setMap}>
                 <TileLayer
                     attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                 />
             </MapContainer>
         )
-        , [])
+        , [lon,lat])
 
     return (
         <>

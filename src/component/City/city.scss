@@ -23,14 +23,16 @@ input {
 
 .grid-content__city {
     display: grid;
-    grid-template-areas: "search search search search search" "map map map map map";
+    grid-template-areas: "search search search search" "map map map map";
+    justify-content: center;
 }
 
 .search {
     grid-area: search;
-    width: 100vw;
+    width: 90vw;
 }
 
 .map {
+    justify-self: center;
     grid-area: map;
 }

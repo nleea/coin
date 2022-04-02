@@ -9,7 +9,7 @@ type Inutrition = {
 }
 
 export const initialState = {
-    data: []
+    data: [],
 };
 
 interface Ireducer {

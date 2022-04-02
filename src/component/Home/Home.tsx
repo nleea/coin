@@ -14,7 +14,7 @@ const Home = () => {
                     <div className="content-navbar">
                         <Navbar />
                     </div>
-                    <div className="body">
+                    <div className="body w-100">
                         <MainRoutes />
                     </div>
                 </div>
