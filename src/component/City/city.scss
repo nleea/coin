@@ -23,7 +23,7 @@ input {
 
 .grid-content__city {
     display: grid;
-    grid-template-areas: "search search search search" "map map map map";
+    grid-template-areas: "search search search search" "info info info info" "map map map map";
     justify-content: center;
 }
 
@@ -32,7 +32,16 @@ input {
     width: 90vw;
 }
 
+.info {
+    grid-area: info;
+}
+
 .map {
     justify-self: center;
     grid-area: map;
+}
+
+.background-color__i {
+    background-color: inherit;
+    color: black;
 }

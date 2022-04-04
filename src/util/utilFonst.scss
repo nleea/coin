@@ -1,1 +1,26 @@
-@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200&family=Roboto+Serif:ital,wght@0,200;0,700;1,700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200&family=Roboto+Serif:ital,wght@0,200;0,700;1,700&display=swap");
+
+.button-style {
+    font-family: "Roboto Serif" !important;
+    font-size: 1rem !important;
+    font-weight: bold !important;
+    font-style: italic !important;
+    text-transform: capitalize !important;
+    max-height: 500px !important;
+}
+
+.text-style {
+    font-family: "Roboto Serif";
+    font-style: normal;
+    font-weight: 700;
+    font-stretch: 100%;
+    font-display: swap;
+}
+
+.text-style-2 {
+    font-family: "Roboto Serif";
+    font-style: italic;
+    font-weight: 700;
+    font-stretch: 100%;
+    font-display: swap;
+}

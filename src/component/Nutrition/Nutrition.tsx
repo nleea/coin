@@ -7,7 +7,7 @@ import "../../util/utilColor.scss";
 import "./style-nutrition.scss";
 
 export const Nutrition = () => {
-    const [input, setInput] = useState<string>();
+    const [input, setInput] = useState<string>("");
     const { FetchNutrition } = GetNutritionHooks();
     const tableOptions = ["Name", "Calories", "Serving size g", "Fat total g", "Fat saturated g", "Protein g",
         "Sodium mg", "Potassium mg", "Cholesterol mg", "Carbohydrates total", "Fiber g", "Sugar g", "Edit", "Delete"];
@@ -25,14 +25,14 @@ export const Nutrition = () => {
             <hr />
             <div className="card w-50 m-auto shadow bg-body rounded-pill " >
                 <div className="p-4 d-flex gray-9 rounded-pill ">
-                    <input type="text" className="form-control gray-9 gray-text-1" id="exampleInputEmail1" aria-describedby="emailHelp" onChange={handlreChange} placeholder="Tomatoes" />
-                    <button className="btn btn-primary mx-1" onClick={handlerClick} value={input} >
+                    <input type="text" className="form-control gray-9 gray-text-1" value={input} id="exampleInputEmail1" aria-describedby="emailHelp" onChange={handlreChange} placeholder="Tomatoes" />
+                    <button className="btn btn-primary mx-1" onClick={handlerClick}  >
                         <i className="bi bi-search"></i>
                     </button>
                 </div>
             </div>
-            <div className="container-fluid my-4 mx-auto bg-dark text-white card border" style={{ fontFamily: "Roboto Serif", fontSize: "2.5rem" }}>
-                <div className="card-header text-center border-bottom border-secondary">
+            <div className="container-fluid my-4 mx-auto bg-dark text-white card shadow-lg" >
+                <div className="card-header text-center border-bottom border-secondary" style={{ fontFamily: "Roboto Serif", fontSize: "2.5rem",fontWeight:"bold" }}>
                     Nutrition Table
                 </div>
                 <div className="card-body">

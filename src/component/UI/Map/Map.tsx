@@ -1,26 +1,26 @@
-import { useEffect, useMemo, useState, } from "react";
+import { useEffect, useMemo, useState, useContext } from "react";
 import { MapContainer, TileLayer } from 'react-leaflet';
-import { useUser } from "../../City/City";
+import { AppContext } from "../../../context/context";
 
 export const Map = () => {
     const [map, setMap] = useState<any>(null);
-    const [lon,lat] = useUser();
+    const { state } = useContext(AppContext);
     useEffect(() => {
-        
         if (map)
-            map.setView([lon,lat]);
-    }, [lon,lat,map]);
+            map.setView([state.city.latitude, state.city.longitude]);
+
+    }, [state.city.latitude, state.city.longitude, map]);
 
     const showMap = useMemo(
         () => (
-            <MapContainer center={[lon,lat]} zoom={13} dragging={true} whenCreated={setMap}>
+            <MapContainer center={[state.city.latitude, state.city.longitude]} zoom={13} dragging={true} whenCreated={setMap}>
                 <TileLayer
                     attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                 />
             </MapContainer>
         )
-        , [lon,lat])
+        , [state.city.latitude, state.city.longitude])
 
     return (
         <>
