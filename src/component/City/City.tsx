@@ -2,7 +2,7 @@ import { ChangeEvent, useState, useEffect, useContext } from "react";
 import { useCityHooks } from "../../custom-hooks/useCityHooks";
 import { Outlet, NavLink } from "react-router-dom";
 import { AppContext } from "../../context/context";
-import "./city.scss"
+import "./city.scss";
 
 export const City = () => {
     const [input, setCity] = useState("");
@@ -11,6 +11,7 @@ export const City = () => {
     const ChangeHandler = (e: ChangeEvent<HTMLInputElement>) => setCity(e.target.value);
     const FetchHandler = () => fetchCity(input);
     let a = document.querySelector(".content") as HTMLElement;
+
     useEffect(() => {
         if (state.city["latitude"] > 0 && a !== null) {
             a.style.height = "auto";
@@ -43,12 +44,12 @@ export const City = () => {
                     </div>
                 </div>
                 <div className="info" >
-                    <div className="card w-50 mx-auto bg-light shadow border-1 border-dark">
+                    <div className="card w-75 mx-auto bg-light shadow border-1 border-dark">
                         <div className="card-header text-center background-color__i border-1 border-dark" style={{ fontFamily: "Roboto Serif", fontSize: "1.5rem" }}>
                             Information about {state.city['name']}
                         </div>
-                        <div className="card-body shadow border-1">
-                            <ul className="list-group list-group-flush bg-light">
+                        <div className="card-body shadow border-1 row">
+                            <ul className="list-group list-group-flush bg-light col-4">
                                 <li className="list-group-item background-color__i d-flex justify-content-between">
                                     <div className="text-style" >Longitude</div>
                                     <div className="text-style-2" >{state.city["longitude"]}</div>
@@ -70,16 +71,59 @@ export const City = () => {
                                     <div className="text-style-2">{`${state.city["is_capital"]}`}</div>
                                 </li>
                             </ul>
+                            <ul className="list-group list-group-flush bg-light col-4">
+                                <li className="list-group-item background-color__i d-flex justify-content-between">
+                                    <div className="text-style" >Humidity</div>
+                                    <div className="text-style-2" >{state.city.humidity}</div>
+                                </li>
+                                <li className="list-group-item background-color__i d-flex justify-content-between">
+                                    <div className="text-style" >Wind Speed</div>
+                                    <div className="text-style-2">{state.city.wind_speed}</div>
+                                </li>
+                                <li className="list-group-item background-color__i d-flex justify-content-between">
+                                    <div className="text-style" >Temp</div>
+                                    <div className="text-style-2">{state.city.temp}</div>
+                                </li>
+                                <li className="list-group-item background-color__i d-flex justify-content-between">
+                                    <div className="text-style" >Max Temp</div>
+                                    <div className="text-style-2">{state.city.max_temp}</div>
+                                </li>
+                                <li className="list-group-item background-color__i d-flex justify-content-between">
+                                    <div className="text-style" >Cloud</div>
+                                    <div className="text-style-2">{`${state.city.cloud_pct}`}</div>
+                                </li>
+                            </ul>
+                            <ul className="list-group list-group-flush bg-light col-4">
+                                <li className="list-group-item background-color__i d-flex justify-content-between">
+                                    <div className="text-style" >Wind degrees</div>
+                                    <div className="text-style-2" >{state.city.wind_degrees}</div>
+                                </li>
+                                <li className="list-group-item background-color__i d-flex justify-content-between">
+                                    <div className="text-style" >Sunset</div>
+                                    <div className="text-style-2">{state.city.sunset}</div>
+                                </li>
+                                <li className="list-group-item background-color__i d-flex justify-content-between">
+                                    <div className="text-style" >Min temp</div>
+                                    <div className="text-style-2">{state.city.min_temp}</div>
+                                </li>
+                                <li className="list-group-item background-color__i d-flex justify-content-between">
+                                    <div className="text-style" >Feels like</div>
+                                    <div className="text-style-2">{state.city.feels_like}</div>
+                                </li>
+                                <li className="list-group-item background-color__i d-flex justify-content-between">
+                                    <div className="text-style" >sunrise</div>
+                                    <div className="text-style-2">{`${state.city.sunrise}`}</div>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </div>
                 {state.city.name ? <div className="map m-2 mx-5 card p-2 bg-dark shadow-sm" >
                     <div className="card-body frame">
-                        {<Outlet />}
+                        <Outlet />
                     </div>
                 </div> : null}
             </div>
         </div>
-
     )
 };

@@ -1,26 +1,16 @@
 import { createContext, Dispatch } from "react";
-
-type data = {
-    [x: string]: any;
-}
-
-type city = {
-    name: string,
-    latitude: number,
-    longitude: number,
-    country: string,
-    population: number,
-    is_capital: boolean
-}
+import { cityI } from "./models/modelCity";
+import { data } from "./models/ModelsNutrition";
+import { city } from "./data/city";
 
 type dataContext = {
     data: data[];
-    city: city;
+    city: cityI;
 }
 
 export const initialState: dataContext = {
     data: [],
-    city: { country: "", is_capital: false, latitude: 0, longitude: 0, name: "", population: 0 }
+    city: city
 };
 
 interface Ireducer {
@@ -38,6 +28,5 @@ export function reducer(state: dataContext, action: Ireducer) {
             return { data: [], city: {} };
     }
 };
-
 
 export const AppContext = createContext<{ state: dataContext, dispatch: Dispatch<Ireducer> }>({ state: initialState, dispatch: () => undefined })
