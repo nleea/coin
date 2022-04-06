@@ -23,8 +23,8 @@ export const Map = () => {
         , [state.city.latitude, state.city.longitude])
 
     return (
-        <>
+        <div className="shadow" >
             {showMap}
-        </>
+        </div>
     )
 };

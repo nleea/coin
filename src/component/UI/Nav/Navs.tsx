@@ -17,7 +17,7 @@ export const Navs = (props: props) => {
                 <NavLink className={({ isActive }) => isActive ? defectClass.join(" ").concat(" active") : defectClass.join(" ")} to="/city" onClick={props.handlerClick}>City</NavLink>
 
 
-                <NavLink className={({ isActive }) => isActive ? defectClass.join(" ").concat(" active") : defectClass.join(" ")} to="/" onClick={props.handlerClick}>Link</NavLink>
+                <NavLink className={({ isActive }) => isActive ? defectClass.join(" ").concat(" active") : defectClass.join(" ")} to="/trivia" onClick={props.handlerClick}>Trivia</NavLink>
 
 
                 <NavLink className={({ isActive }) => isActive ? defectClass.join(" ").concat(" active") : defectClass.join(" ")} to="/" onClick={props.handlerClick}>Disabled</NavLink>

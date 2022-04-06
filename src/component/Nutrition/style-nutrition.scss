@@ -5,7 +5,7 @@ input:focus {
     color: white !important;
 }
 
-input {
+.d-flex input {
     border: none !important;
     outline: none;
     border-bottom: 1px solid $gray-100 !important;

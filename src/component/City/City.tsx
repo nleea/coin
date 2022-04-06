@@ -2,6 +2,8 @@ import { ChangeEvent, useState, useEffect, useContext } from "react";
 import { useCityHooks } from "../../custom-hooks/useCityHooks";
 import { Outlet, NavLink } from "react-router-dom";
 import { AppContext } from "../../context/context";
+import { List } from "../UI/List/List";
+import { Search } from "../UI/Search/Search";
 import "./city.scss";
 
 export const City = () => {
@@ -33,92 +35,44 @@ export const City = () => {
             <div className="grid-content__city">
                 <div className="search" >
                     <div className="p-3 my-5 w-75 mx-auto border-0">
-                        <div className="card w-75 m-auto shadow bg-body rounded-pill" >
-                            <div className="p-4 d-flex gray-9 rounded-pill ">
-                                <input type="text" className="form-control gray-9 gray-text-1" id="exampleInputEmail1" aria-describedby="emailHelp" onChange={ChangeHandler} placeholder="London" />
-                                <NavLink className="btn btn-primary mx-1" to={`/city/${state.city['name']}`} onClick={FetchHandler} >
-                                    <i className="bi bi-search"   ></i>
-                                </NavLink>
-                            </div>
-                        </div>
+                        <Search handlreChange={ChangeHandler} handlerClick={FetchHandler} input={input} >
+                            <NavLink className="btn btn-primary mx-1" to={`/city/${state.city['name']}`} onClick={FetchHandler} >
+                                <i className="bi bi-search"   ></i>
+                            </NavLink>
+                        </Search>
                     </div>
                 </div>
-                <div className="info" >
-                    <div className="card w-75 mx-auto bg-light shadow border-1 border-dark">
+                <div className="info rounded mx-2 p-2" >
+                    <div className="card w-75 mx-auto bg-light border-1 border-dark">
                         <div className="card-header text-center background-color__i border-1 border-dark" style={{ fontFamily: "Roboto Serif", fontSize: "1.5rem" }}>
                             Information about {state.city['name']}
                         </div>
-                        <div className="card-body shadow border-1 row">
-                            <ul className="list-group list-group-flush bg-light col-4">
-                                <li className="list-group-item background-color__i d-flex justify-content-between">
-                                    <div className="text-style" >Longitude</div>
-                                    <div className="text-style-2" >{state.city["longitude"]}</div>
-                                </li>
-                                <li className="list-group-item background-color__i d-flex justify-content-between">
-                                    <div className="text-style" >Latitude</div>
-                                    <div className="text-style-2">{state.city["latitude"]}</div>
-                                </li>
-                                <li className="list-group-item background-color__i d-flex justify-content-between">
-                                    <div className="text-style" >Country</div>
-                                    <div className="text-style-2">{state.city["country"]}</div>
-                                </li>
-                                <li className="list-group-item background-color__i d-flex justify-content-between">
-                                    <div className="text-style" >Population</div>
-                                    <div className="text-style-2">{state.city["population"]}</div>
-                                </li>
-                                <li className="list-group-item background-color__i d-flex justify-content-between">
-                                    <div className="text-style" >Is Capital</div>
-                                    <div className="text-style-2">{`${state.city["is_capital"]}`}</div>
-                                </li>
-                            </ul>
-                            <ul className="list-group list-group-flush bg-light col-4">
-                                <li className="list-group-item background-color__i d-flex justify-content-between">
-                                    <div className="text-style" >Humidity</div>
-                                    <div className="text-style-2" >{state.city.humidity}</div>
-                                </li>
-                                <li className="list-group-item background-color__i d-flex justify-content-between">
-                                    <div className="text-style" >Wind Speed</div>
-                                    <div className="text-style-2">{state.city.wind_speed}</div>
-                                </li>
-                                <li className="list-group-item background-color__i d-flex justify-content-between">
-                                    <div className="text-style" >Temp</div>
-                                    <div className="text-style-2">{state.city.temp}</div>
-                                </li>
-                                <li className="list-group-item background-color__i d-flex justify-content-between">
-                                    <div className="text-style" >Max Temp</div>
-                                    <div className="text-style-2">{state.city.max_temp}</div>
-                                </li>
-                                <li className="list-group-item background-color__i d-flex justify-content-between">
-                                    <div className="text-style" >Cloud</div>
-                                    <div className="text-style-2">{`${state.city.cloud_pct}`}</div>
-                                </li>
-                            </ul>
-                            <ul className="list-group list-group-flush bg-light col-4">
-                                <li className="list-group-item background-color__i d-flex justify-content-between">
-                                    <div className="text-style" >Wind degrees</div>
-                                    <div className="text-style-2" >{state.city.wind_degrees}</div>
-                                </li>
-                                <li className="list-group-item background-color__i d-flex justify-content-between">
-                                    <div className="text-style" >Sunset</div>
-                                    <div className="text-style-2">{state.city.sunset}</div>
-                                </li>
-                                <li className="list-group-item background-color__i d-flex justify-content-between">
-                                    <div className="text-style" >Min temp</div>
-                                    <div className="text-style-2">{state.city.min_temp}</div>
-                                </li>
-                                <li className="list-group-item background-color__i d-flex justify-content-between">
-                                    <div className="text-style" >Feels like</div>
-                                    <div className="text-style-2">{state.city.feels_like}</div>
-                                </li>
-                                <li className="list-group-item background-color__i d-flex justify-content-between">
-                                    <div className="text-style" >sunrise</div>
-                                    <div className="text-style-2">{`${state.city.sunrise}`}</div>
-                                </li>
-                            </ul>
+                        <div className="card-body border-1 row shadow">
+                            <List property={[
+                                "latitude",
+                                "longitude",
+                                "country",
+                                "population",
+                                "is_capital"
+                            ]} ></List>
+                            <List property={[
+                                "humidity",
+                                "wind_speed",
+                                "temp",
+                                "max_temp",
+                                "cloud_pct"
+                            ]} ></List>
+                            <List property={[
+                                "wind_degrees",
+                                "sunset",
+                                "min_temp",
+                                "feels_like",
+                                "sunrise"
+                            ]} ></List>
                         </div>
                     </div>
                 </div>
-                {state.city.name ? <div className="map m-2 mx-5 card p-2 bg-dark shadow-sm" >
+                {state.city.name ? <div className="map my-3 mx-5 card p-2 bg-dark shadow" >
                     <div className="card-body frame">
                         <Outlet />
                     </div>
