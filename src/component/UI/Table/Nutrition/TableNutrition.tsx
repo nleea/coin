@@ -30,24 +30,24 @@ export const TableNutrition = (props: props) => {
                 <table className="card-body table table-hover text-light text-center mb-3 shadow">
                     <thead className="text-light text-center" >
                         <tr style={{ fontFamily: "Roboto Serif", fontSize: "1rem", fontWeight: "bold", fontStyle: "italic", textTransform: "capitalize", maxHeight: "500px" }} >
-                            {props.cols.map((col,p) => {
-                                return <th scope="col" key={p}>{col}</th>
+                            {props.cols.map((col, p) => {
+                                return <th scope="col" key={p}>{col.replace("_", " ")}</th>
                             })}
                         </tr>
                     </thead>
                     <tbody>
                         {
-                            slice.map((v: any,p) =>
+                            slice.map((v: any, p) =>
                             (
                                 <>
                                     <tr className="table-dark border-bottom align-self-center" key={p}>
-                                        {Object.keys(v).map((keys: any,posicion) => {
+                                        {Object.keys(v).map((keys: any, posicion) => {
                                             if (keys === "url") return null;
                                             else return keys === "name" ? <th scope="row" className="text-secondary text-start "
                                                 style={{ fontFamily: "Oswald, sans-serif", fontSize: "1.3rem" }} key={posicion} >{v[keys]}</th> : <td key={keys} className="p-3 align-self-center">{v[keys]}</td>
                                         })}
-                                        <td><i typeof="button" className="bi bi-pencil text-light btn btn-primary shadow p-1 button-style" key={p+100} onClick={() => HandlerClick(v)} ></i></td>
-                                        <td><i typeof="button" className="bi bi-trash text-light btn btn-danger shadow p-1 button-style"  key={p+10} onClick={() => HandlerClick(v)}></i></td>
+                                        <td><i typeof="button" className="bi bi-pencil text-light btn btn-primary shadow p-1 button-style" key={p + 100} onClick={() => HandlerClick(v)} ></i></td>
+                                        <td><i typeof="button" className="bi bi-trash text-light btn btn-danger shadow p-1 button-style" key={p + 10} onClick={() => HandlerClick(v)}></i></td>
                                     </tr>
                                 </>
                             )

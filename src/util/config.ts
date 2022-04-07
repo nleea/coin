@@ -6,4 +6,4 @@ const API_CITY = "https://api.api-ninjas.com/v1/city?name="
 const API_CITY_WEATHER = "https://api.api-ninjas.com/v1/weather?city=";
 const API_TRIVIA = "https://api.api-ninjas.com/v1/trivia?category=";
 
-export { API_NINJA_KEY, API_NINJA_NUTRITION, API_PEXELS_KEY, API_PEXELS_PHOTO, API_CITY, API_CITY_WEATHER }
+export { API_NINJA_KEY, API_NINJA_NUTRITION, API_PEXELS_KEY, API_PEXELS_PHOTO, API_CITY, API_CITY_WEATHER, API_TRIVIA }

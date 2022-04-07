@@ -1,4 +1,16 @@
 @import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200&family=Roboto+Serif:ital,wght@0,200;0,700;1,700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Sen&display=swap");
+
+.button-style-font {
+    font-family: "Patrick Hand" !important;
+    font-size: 1.1rem !important;
+    font-weight: 400 !important;
+    font-display: swap;
+    font-style: normal !important;
+    text-transform: capitalize !important;
+    max-height: 500px !important;
+}
 
 .button-style {
     font-family: "Roboto Serif" !important;
