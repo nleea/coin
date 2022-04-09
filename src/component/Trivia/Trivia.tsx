@@ -2,22 +2,36 @@ import { useState } from "react";
 import { Outlet, useOutletContext } from "react-router-dom";
 import { Link } from "../UI/Link/Link";
 import { useTriviaHooks } from "../../custom-hooks/useTriviaHooks";
+import { Spinner } from "../UI/Spinner/Spinner";
 import "./trivia.scss";
 
-export const OutletContext = () => {
-    return useOutletContext<any>();
-};
+export const OutletContext = () => useOutletContext<{ refresh: () => void, handlerAnswerClick: (a: any) => void, answer: number }>();
 
 export const Trivia = () => {
     const [show, setShow] = useState(false);
-    const { fetchtrivia } = useTriviaHooks();
+    const { fetchtrivia, isLoading } = useTriviaHooks();
     const [category_, setCategory] = useState("music")
-
+    const [answer, setAnswer] = useState(0);
+    let render = <Spinner />
     const handlerClicktrivia = (category = "music") => {
         setShow((p) => !p);
-        fetchtrivia(category!);
-        setCategory(category!);
+        fetchtrivia(category);
+        setCategory(category);
+        setAnswer(0);
     };
+
+    if (!isLoading) {
+        render = (
+            <>
+                <div className="card w-25 mx-auto bg-dark">
+                    <div className="card-body text-light text-center">
+                        {answer}
+                    </div>
+                </div>
+                <Outlet context={{ refresh: () => fetchtrivia(category_), handlerAnswerClick: setAnswer, answer: answer }} />
+            </>
+        );
+    }
 
     return (
         <div className="card w-50 bg-color mx-auto mt-5">
@@ -39,7 +53,7 @@ export const Trivia = () => {
                     <Link color="b5" link={"/trivia/mathematics"} click={() => handlerClicktrivia("mathematics")}>Mathematics</Link>
                     <Link color="b6" link={"/trivia/religionmythology"} click={() => handlerClicktrivia("religionmythology")}>Religionmythology</Link>
                     <Link color="b7" link={"/trivia/sportsleisure"} click={() => handlerClicktrivia("sportsleisure")}>Sportsleisure</Link>
-                </div> : <Outlet context={{ refresh: () => fetchtrivia(category_) }} />}
+                </div> : render}
             </div>
         </div>
     );

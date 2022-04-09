@@ -4,11 +4,12 @@ import { Outlet, NavLink } from "react-router-dom";
 import { AppContext } from "../../context/context";
 import { List } from "../UI/List/List";
 import { Search } from "../UI/Search/Search";
+import { Spinner } from "../UI/Spinner/Spinner";
 import "./city.scss";
 
 export const City = () => {
     const [input, setCity] = useState("");
-    const { fetchCity } = useCityHooks();
+    const { fetchCity, isLoading } = useCityHooks();
     const { state } = useContext(AppContext);
     const ChangeHandler = (e: ChangeEvent<HTMLInputElement>) => setCity(e.target.value);
     const FetchHandler = () => fetchCity(input);
@@ -72,7 +73,7 @@ export const City = () => {
                         </div>
                     </div>
                 </div>
-                {state.city.name ? <div className="map my-3 mx-5 card p-2 bg-dark shadow" >
+                {isLoading ? <Spinner /> : state.city.name ? <div className="map my-3 mx-5 card p-2 bg-dark shadow" >
                     <div className="card-body frame">
                         <Outlet />
                     </div>
