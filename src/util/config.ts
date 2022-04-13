@@ -5,5 +5,6 @@ const API_PEXELS_PHOTO = "https://api.pexels.com/v1/search";
 const API_CITY = "https://api.api-ninjas.com/v1/city?name="
 const API_CITY_WEATHER = "https://api.api-ninjas.com/v1/weather?city=";
 const API_TRIVIA = "https://api.api-ninjas.com/v1/trivia?category=";
+const API_TRIVIA2 = 'https://the-trivia-api.com/questions?limit=1&categories='
 
-export { API_NINJA_KEY, API_NINJA_NUTRITION, API_PEXELS_KEY, API_PEXELS_PHOTO, API_CITY, API_CITY_WEATHER, API_TRIVIA }
+export { API_NINJA_KEY, API_NINJA_NUTRITION, API_PEXELS_KEY, API_PEXELS_PHOTO, API_CITY, API_CITY_WEATHER, API_TRIVIA,API_TRIVIA2 }

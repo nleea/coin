@@ -8,9 +8,11 @@ export const Answer = () => {
     const { refresh, handlerAnswerClick, answer } = OutletContext();
     let render = <div></div>;
 
-    const correctAnswer = () => {
-        handlerAnswerClick((p: any) => p + 1);
-        refresh();
+    const correctAnswer = (choise: string) => {
+        if (state.trivia.answer === choise) {
+            handlerAnswerClick((p: any) => p + 1);
+            refresh();
+        }
     };
 
     const StartGame = () => {
@@ -29,9 +31,9 @@ export const Answer = () => {
                         <h2>{state.trivia.question}</h2>
                     </div>
                     <div className="col-12 row mt-4">
-                        <div className="col-12 d-flex justify-content-center"><button className="btn btn-success m-2 w-50" onClick={correctAnswer}>{state.trivia.answer}</button></div>
-                        <div className="col-12 d-flex justify-content-center"><button className="btn btn-primary m-2 w-50">d</button></div>
-                        <div className="col-12 d-flex justify-content-center"><button className="btn btn-warning m-2 w-50">d</button></div>
+                        {state.trivia.answers.map((answer) => {
+                            return <div className="col-12 d-flex justify-content-center"><button className="btn btn-success m-2 w-50 answer" onClick={() => correctAnswer(answer)}>{answer}</button></div>
+                        })}
                         <div className="col-12 d-flex justify-content-center"><button className="btn btn-dark m-2 w-25" onClick={refresh} ><i className="bi bi-arrow-clockwise"></i></button></div>
                     </div>
                 </div>

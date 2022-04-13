@@ -3,6 +3,7 @@ export type modelsTriviaI = {
     category: string;
     question: string;
     answer: string;
+    answers: string[]
 }
 
 export type data = {

@@ -10,12 +10,14 @@ export const OutletContext = () => useOutletContext<{ refresh: () => void, handl
 export const Trivia = () => {
     const [show, setShow] = useState(false);
     const { fetchtrivia, isLoading } = useTriviaHooks();
-    const [category_, setCategory] = useState("music")
+    const [category_, setCategory] = useState("music");
+    const [dificulty, setDificulty] = useState("easy");
     const [answer, setAnswer] = useState(0);
-    let render = <Spinner />
+    let render = <Spinner />;
+
     const handlerClicktrivia = (category = "music") => {
         setShow((p) => !p);
-        fetchtrivia(category);
+        fetchtrivia(category, dificulty);
         setCategory(category);
         setAnswer(0);
     };
@@ -28,7 +30,7 @@ export const Trivia = () => {
                         {answer}
                     </div>
                 </div>
-                <Outlet context={{ refresh: () => fetchtrivia(category_), handlerAnswerClick: setAnswer, answer: answer }} />
+                <Outlet context={{ refresh: () => fetchtrivia(category_, 'easy'), handlerAnswerClick: setAnswer, answer: answer }} />
             </>
         );
     }
@@ -39,20 +41,24 @@ export const Trivia = () => {
             <div className="card-body">
                 <Link color="bg-dark" link="/trivia" click={handlerClicktrivia}><i className="bi bi-caret-left"></i></Link>
                 {!show ? <div className="w-100 flex-wrap mt-2" hidden={show}>
-                    <Link color="b1" link={"/trivia/artliterature"} click={() => handlerClicktrivia("artliterature")}>Artliterature</Link>
-                    <Link color="b3" link={"/trivia/sciencenature"} click={() => handlerClicktrivia("sciencenature")}>Sciencenature</Link>
-                    <Link color="b2" link={"/trivia/language"} click={() => handlerClicktrivia("language")}>Language</Link>
-                    <Link color="b4" link={"/trivia/general"} click={() => handlerClicktrivia("general")}>General</Link>
-                    <Link color="b5" link={"/trivia/fooddrink"} click={() => handlerClicktrivia("fooddrink")}>Fooddrink</Link>
-                    <Link color="b6" link={"/trivia/peopleplaces"} click={() => handlerClicktrivia("peopleplaces")}>Peopleplaces</Link>
+                    <div className="w-75 card bg-dark mx-auto my-3">
+                        <div className="card-header text-light text-center fs-3">Dificulty</div>
+                        <div className="card-body mx-auto d-flex justify-content-evenly w-100">
+                            <button className="btn btn-success" onClick={() => setDificulty('easy')}>Easy</button>
+                            <button className="btn btn-primary" onClick={() => setDificulty('medium')}>Medium</button>
+                            <button className="btn btn-danger" onClick={() => setDificulty('hard')}>Hard</button>
+                        </div>
+                    </div>
+                    <Link color="b1" link={"/trivia/artliterature"} click={() => handlerClicktrivia("arts_and_literature")}>Arts & Literature</Link>
+                    <Link color="b3" link={"/trivia/filmvideo"} click={() => handlerClicktrivia("film_and_tv")}>Film & TV</Link>
+                    <Link color="b4" link={"/trivia/general"} click={() => handlerClicktrivia("general_knowledge")}>General Knowledge</Link>
+                    <Link color="b5" link={"/trivia/fooddrink"} click={() => handlerClicktrivia("food_and_drink")}>Fooddrink</Link>
                     <Link color="b7" link={"/trivia/geography"} click={() => handlerClicktrivia("geography")}>Geography</Link>
-                    <Link color="b1" link={"/trivia/historyholidays"} click={() => handlerClicktrivia("historyholidays")}>Historyholidays</Link>
-                    <Link color="b2" link={"/trivia/entertainment"} click={() => handlerClicktrivia("entertainment")}>Entertainment</Link>
-                    <Link color="b3" link={"/trivia/toysgames"} click={() => handlerClicktrivia("toysgames")}>Toysgames</Link>
+                    <Link color="b1" link={"/trivia/history"} click={() => handlerClicktrivia("history")}>History</Link>
+                    <Link color="b2" link={"/trivia/science"} click={() => handlerClicktrivia("science")}>Science</Link>
+                    <Link color="b3" link={"/trivia/societyculture"} click={() => handlerClicktrivia("society_and_culture")}>Society & Culture</Link>
                     <Link color="b4" link={"/trivia/music"} click={() => handlerClicktrivia("music")}>Music</Link>
-                    <Link color="b5" link={"/trivia/mathematics"} click={() => handlerClicktrivia("mathematics")}>Mathematics</Link>
-                    <Link color="b6" link={"/trivia/religionmythology"} click={() => handlerClicktrivia("religionmythology")}>Religionmythology</Link>
-                    <Link color="b7" link={"/trivia/sportsleisure"} click={() => handlerClicktrivia("sportsleisure")}>Sportsleisure</Link>
+                    <Link color="b5" link={"/trivia/sportleisure"} click={() => handlerClicktrivia("sport_and_leisure")}>Sport & Leisure</Link>
                 </div> : render}
             </div>
         </div>
